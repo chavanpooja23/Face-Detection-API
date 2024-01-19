@@ -1,18 +1,30 @@
-require('./dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 
-const register = require('./controllers/register');
-const signin = require('./controllers/signin');
-const profile = require('./controllers/profile');
-const image = require('./controllers/image');
+// const register = require('./controllers/register');
+// const signin = require('./controllers/signin');
+// const profile = require('./controllers/profile');
+// const image = require('./controllers/image');
+
+import handleRegister from "./controllers/register.js";
+import handleSignin from "./controllers/signin.js";
+import handleProfileGet from "./controllers/profile.js";
+import {handleImage,handleApiCall} from "./controllers/register.js";
 
 const db = knex({
   client: 'pg',
-  connection: process.env.DATABASE_URL
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {rejectedUnauthorized: false},
+    host: process.env.DATABASE_HOST,
+    port: 5432,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PWD,
+    database: process.env.DATABASE_DB
+  }
 });
 
 

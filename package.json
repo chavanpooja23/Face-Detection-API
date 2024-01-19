@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "start": "node -r dotenv/config server.js",
+    "start": "dotenv -e .env node server.js",
     "build": "npm install"
   },
   "keywords": [],

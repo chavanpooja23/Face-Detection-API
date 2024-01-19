@@ -4,15 +4,10 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 
-// const register = require('./controllers/register');
-// const signin = require('./controllers/signin');
-// const profile = require('./controllers/profile');
-// const image = require('./controllers/image');
-
-import handleRegister from "./controllers/register.js";
-import handleSignin from "./controllers/signin.js";
-import handleProfileGet from "./controllers/profile.js";
-import {handleImage,handleApiCall} from "./controllers/register.js";
+const register = require('./controllers/register');
+const signin = require('./controllers/signin');
+const profile = require('./controllers/profile');
+const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
